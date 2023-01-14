@@ -5,7 +5,7 @@ import { useState, useRef, createRef, useEffect } from "react";
 import AddItemModal from "../components/AddItemModal";
 import { GiHamburgerMenu } from "react-icons/gi";
 import userImage from "../public/UserImage.png";
-import searchIcon from "../public/searchIcon.svg";
+import searchIcon from "../public/SearchIcon.svg";
 import BackDrop from "@/utils/BackDrop";
 import refreshIcon from "../public/RefreshIcon.svg";
 import { IoAddOutline } from "react-icons/io5";
