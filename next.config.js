@@ -4,8 +4,6 @@ const nextConfig = {
   images: {
     unoptimized: true
 },
-  basePath:"/online-thela",
-  assetPrefix:"/online-thela/",
 }
 
 module.exports = nextConfig
