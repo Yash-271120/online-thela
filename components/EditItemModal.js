@@ -19,6 +19,13 @@ const EditItemModal = ({
   setId,
   submitEdit,
 }) => {
+  const resetHandler = () => {
+    setName("");
+    setQuantity("");
+    setUnit("1");
+    setWeight("");
+  };
+
   return (
     <div
       id="addItemBox"
@@ -91,10 +98,16 @@ const EditItemModal = ({
       </div>
       <div className="">
         <div className=" flex justify-around">
-          <button className=" text-yellow-300 py-1 px-2 border border-yellow-300 rounded-lg text-2xl transition-all duration-200 hover:bg-gray-100">
+          <button
+            className=" text-yellow-300 py-1 px-2 border border-yellow-300 rounded-lg text-2xl transition-all duration-200 hover:bg-gray-100"
+            onClick={closeHandler}
+          >
             Cancel
           </button>
-          <button className=" text-yellow-300 py-1 px-2 border border-yellow-300 rounded-lg text-2xl transition-all duration-200 hover:bg-gray-100">
+          <button
+            className=" text-yellow-300 py-1 px-2 border border-yellow-300 rounded-lg text-2xl transition-all duration-200 hover:bg-gray-100"
+            onClick={resetHandler}
+          >
             Reset
           </button>
           <button

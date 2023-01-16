@@ -15,11 +15,19 @@ const AddItemModal = ({ open, units, closeHandler, submitAdd }) => {
     if (submitAdd(itemName, itemQuantity, itemUnit, itemWeight, itemId)) {
       setItemName("");
       setItemQuantity("");
-      setItemUnit("1");
+      setItemUnit("10");
       setItemWeight("");
       setItemId("");
       closeHandler();
     }
+  };
+
+  const resetHandler = () => {
+    setItemName("");
+    setItemQuantity("");
+    setItemUnit("10");
+    setItemWeight("");
+    setItemId("");
   };
 
   return (
@@ -97,10 +105,16 @@ const AddItemModal = ({ open, units, closeHandler, submitAdd }) => {
       </div>
       <div className="">
         <div className=" flex justify-around">
-          <button className=" text-yellow-300 py-1 px-2 border border-yellow-300 rounded-lg text-2xl">
+          <button
+            className=" text-yellow-300 py-1 px-2 border border-yellow-300 rounded-lg text-2xl transition-all duration-200 hover:bg-gray-100"
+            onClick={closeHandler}
+          >
             Cancel
           </button>
-          <button className=" text-yellow-300 py-1 px-2 border border-yellow-300 rounded-lg text-2xl">
+          <button
+            className=" text-yellow-300 py-1 px-2 border border-yellow-300 rounded-lg text-2xl transition-all duration-200 hover:bg-gray-100"
+            onClick={resetHandler}
+          >
             Reset
           </button>
           <button

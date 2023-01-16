@@ -125,6 +125,7 @@ export default function Home() {
   const [searchData, setSearchData] = useState("");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isAddingDisabled, setIsAddingDisabled] = useState(false);
+  const [isEditingDisabled, setIsEditingDisabled] = useState(false);
   const [isRefreshing, setIsRefreshing] = useState(false);
   const [userName, setUserName] = useState("Kushagra");
   const bottomRef = useRef(null);
@@ -171,6 +172,7 @@ export default function Home() {
   };
 
   const toggleEditItemModal = (itemData) => {
+    if (isEditingDisabled) return;
     setCurrentItemName(itemData.item_name);
     setCurrentItemQuantity(itemData.item_quantity);
     setCurrentItemUnit(itemData.item_unit);
@@ -304,7 +306,6 @@ export default function Home() {
       and update itemList state
       if the response is not successful, show a toast with the error message
     */
-
     const updatedItemList = itemList.map((item) => {
       if (item.id === currentItemId) {
         item.item_name = currentItemName;
@@ -330,7 +331,9 @@ export default function Home() {
     setCurrentItemQuantity("");
     setCurrentItemUnit("");
     setCurrentItemWeight("");
+    setIsEditingDisabled(true);
     setTimeout(() => {
+      setIsEditingDisabled(false);
       setCurrentItemId(null);
     }, 5000);
     return true;
@@ -616,7 +619,11 @@ export default function Home() {
                               <td
                                 className={`p-1 ${
                                   index % 2 ? "bg-gray-200" : ""
-                                } bg-green-400 cursor-pointer`}
+                                }  cursor-pointer ${
+                                  isEditingDisabled
+                                    ? "bg-[#cccccc]"
+                                    : "bg-green-400"
+                                }`}
                                 onClick={() => toggleEditItemModal(item)}
                               >
                                 <Image src={editIcon} className="" />
